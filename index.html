@@ -23,24 +23,22 @@ position:relative;box-shadow:inset 0 0 40px #0008,0 0 20px #0005}.side:before{po
 writing-mode:vertical-rl;font:10px Arial;letter-spacing:2px;color:#a69577}.enemy:before{content:"ВОРОГ"}.player:before{content:"ТИ"}
 .lane{height:33.33%;min-height:0;border-bottom:1px solid #ffffff12;display:flex;align-items:center;gap:4px}.lane:last-child{border:0}
 .laneName{width:40px;flex:none;text-align:center;color:#a9997d;font:9px Arial;line-height:11px}.cards{display:flex;gap:4px;overflow:hidden;align-items:center;min-width:0}
-.card{width:72px;height:94px;flex:0 0 72px;border:1px solid #a37a3d;border-radius:7px;
-background:linear-gradient(145deg,#624a2c,#1e140c);padding:3px;position:relative;overflow:hidden;box-shadow:0 4px 9px #000b;
-transition:transform .16s,filter .16s,box-shadow .16s;border-top-color:#d3a956}
-.card:after{content:"";position:absolute;inset:0;background:linear-gradient(115deg,#fff3 0,transparent 22%,transparent 75%,#0004);pointer-events:none}
-.card .power{font:bold 15px Arial;color:#fff;text-shadow:0 1px 2px #000;position:relative;z-index:1}.card .art img{display:block;width:100%;height:100%;object-fit:cover;object-position:center;border-radius:4px;display:block;filter:drop-shadow(0 3px 2px #000)}.card .art{height:49px;
-display:flex;align-items:center;justify-content:center;font-size:25px;filter:drop-shadow(0 3px 2px #000);position:relative;z-index:1}
-.card .name{font:bold 8px Arial;text-align:center;color:#f0dfbf;white-space:nowrap;overflow:hidden;position:relative;z-index:1}
-.card .ability{font:7px Arial;color:#d4c09d;text-align:center;line-height:8px;margin-top:2px;position:relative;z-index:1}
-.card .type{position:absolute;right:3px;top:2px;font:8px Arial;color:#e1bb6b;z-index:2}
+.card{width:78px;height:93px;flex:0 0 78px;border:1px solid #8b6a42;border-radius:6px;
+background:#080604;position:relative;overflow:hidden;box-shadow:0 5px 14px #000d;transition:transform .16s,filter .16s,box-shadow .16s;
+}.card:before{content:"";position:absolute;inset:0;border:1px solid #d6b77c88;border-radius:6px;z-index:5;pointer-events:none;box-shadow:inset 0 0 10px #0008}
+.card:after{content:"";position:absolute;inset:0;background:linear-gradient(120deg,#fff2 0,transparent 15%,transparent 70%,#0004 100%);pointer-events:none;z-index:4}
+.card .art{position:absolute;inset:0;z-index:1;overflow:hidden;border-radius:5px;background:#0b0908}
+.card .art img{display:block;width:100%;height:100%;object-fit:cover;object-position:center;border-radius:5px}
+.card .power,.card .type,.card .name,.card .class,.card .ability,.card .stats{display:none}
+.hand .card{width:104px;height:124px;flex:0 0 104px;cursor:pointer}
+.hand .card:active{transform:translateY(-8px) scale(1.03);border-color:#f2ce76;box-shadow:0 10px 22px #000}
 .playedIn{animation:land .35s ease-out}.enemyPlayedIn{animation:landEnemy .35s ease-out}
 @keyframes land{0%{transform:translateY(22px) scale(.72) rotate(-4deg);opacity:0}70%{transform:translateY(-3px) scale(1.03)}100%{transform:none;opacity:1}}
 @keyframes landEnemy{0%{transform:translateY(-22px) scale(.72) rotate(4deg);opacity:0}70%{transform:translateY(3px) scale(1.03)}100%{transform:none;opacity:1}}
-.handbar{height:196px;flex:none;background:#080604f7;border-top:1px solid #92703a;padding:6px 7px calc(7px + env(safe-area-inset-bottom));
+.handbar{height:212px;flex:none;background:#080604f7;border-top:1px solid #92703a;padding:6px 7px calc(7px + env(safe-area-inset-bottom));
 display:flex;flex-direction:column;z-index:5}.status{height:28px;display:flex;align-items:center;justify-content:space-between;font:11px Arial;color:#d1c0a1}
-.status b{color:#e1ba68}.hand{flex:1;min-height:0;display:flex;gap:7px;overflow-x:auto;align-items:flex-start;padding:4px 2px 7px;scrollbar-width:none}
-.hand::-webkit-scrollbar{display:none}.hand .card{width:78px;height:112px;flex-basis:78px;cursor:pointer;border-width:2px}
-.hand .card .power{font-size:18px}.hand .card .art{height:45px}.hand .card .art img{object-fit:cover}.hand .card .art{height:58px;font-size:32px}.hand .card .name{font-size:9px}.hand .card .ability{font-size:8px;line-height:9px}
-.hand .card:active{transform:translateY(-7px) scale(1.03);border-color:#f2ce76;box-shadow:0 7px 18px #000}
+.status b{color:#e1ba68}.hand{flex:1;min-height:0;display:flex;gap:6px;overflow-x:auto;align-items:flex-start;padding:4px 2px 7px;scrollbar-width:none}
+.hand::-webkit-scrollbar{display:none}
 .actions{height:35px;display:flex;gap:7px}.btn{flex:1;border:1px solid #a17a3f;border-radius:6px;background:#3b2a19;color:#efd39a;font:bold 13px Arial}
 .btn:active{background:#624525;transform:translateY(1px)}.btn:disabled{opacity:.42}
 #sound{position:absolute;right:8px;top:59px;z-index:8;border:1px solid #6f542e;border-radius:50%;background:#160f09cc;color:#dfba6d;width:31px;height:31px}
@@ -55,7 +53,7 @@ box-shadow:0 18px 70px #000}.modal h1{margin:0 0 8px;color:#e5bd6c;font-size:29p
 .menuBtn.primary{background:#574021}.small{font:10px Arial;color:#756a59;margin-top:18px}
 .shake{animation:shake .22s ease-in-out 2}@keyframes shake{25%{transform:translateX(-5px)}75%{transform:translateX(5px)}}
 .flash{animation:flash .32s ease-out}@keyframes flash{0%{filter:brightness(2.5)}100%{filter:brightness(1)}}
-@media(min-width:800px){#board{max-width:1050px;width:100%;margin:auto}.side{min-height:175px}.card{width:82px;height:108px;flex-basis:82px}.handbar{height:210px}.hand .card{width:88px;height:124px;flex-basis:88px}}
+@media(min-width:800px){#board{max-width:1050px;width:100%;margin:auto}.side{min-height:175px}.card{width:82px;height:98px;flex-basis:82px}.handbar{height:220px}.hand .card{width:108px;height:129px;flex-basis:108px}}
 </style>
 </head>
 <body>
@@ -82,11 +80,13 @@ box-shadow:0 18px 70px #000}.modal h1{margin:0 0 8px;color:#e5bd6c;font-size:29p
 <script>
 "use strict";
 const CARDS=[
-["Вовк",4,"melee","🐺",""],["Вартовий",5,"melee","🛡️",""],["Берсерк",7,"melee","🪓",""],
-["Лицар",6,"melee","⚔️",""],["Мисливець",4,"ranged","🏹",""],["Арбалетник",6,"ranged","🎯",""],
-["Слідопит",5,"ranged","🦅",""],["Тінь",5,"ranged","🥷",""],["Відьма",5,"magic","🧙",""],
-["Некромант",6,"magic","💀",""],["Король Падіння",10,"melee","👑",""],["Вогнемант",7,"magic","🔥",""],["Друїд",4,"magic","🌿",""]
-].map(x=>({name:x[0],p:x[1],r:x[2],i:x[3],a:x[4]}));
+["Лицар Світла",5,"melee","","Людина. Воїн.","Коли ця карта виходить на поле, дає +1 сили всім союзним картам у ряду.",4,6],
+["Тіньовий Мисливець",4,"ranged","","Людина.","Коли ця карта атакує, завдає +1 шкоди, ціль ослаблена.",3,4],
+["Відьма з Боліт",6,"magic","","Людина. Магія.","Коли ця карта виходить на поле, накладає Отруту на випадкову ворожу карту.",4,5],
+["Кривавий Звір",6,"melee","","Чудовисько.","Коли ця карта отримує шкоду, дає +2 сили.",6,6],
+["Некромант",7,"magic","","Людина. Магія.","Коли ця карта виходить на поле, повертає одну випадкову карту з вашого кладовища.",4,5],
+["Король Падіння",10,"melee","","Людина.","Коли ця карта виходить на поле, усі ваші карти отримують +1 сили. Ворог втрачає 1 сили.",7,8]
+].map(x=>({name:x[0],p:x[1],r:x[2],i:x[3],cls:x[4],a:x[5],atk:x[6],hp:x[7]}));
 let hand=[],enemyHand=[],played=[],enemyPlayed=[],round=1,youRounds=0,enemyRounds=0,passed=false,enemyPassed=false,busy=false,soundOn=true,audio=null;
 
 const $=id=>document.getElementById(id);
@@ -94,17 +94,17 @@ function clone(c){return {...c,id:Math.random().toString(36).slice(2)}}
 function deck(){let d=[];for(let k=0;k<2;k++)CARDS.forEach(c=>d.push(clone(c)));return d.sort(()=>Math.random()-.5)}
 function total(a){return a.reduce((s,c)=>s+c.p,0)}
 const ART={
-  'Лицар': 'art_1.jpg',
-  'Мисливець': 'art_2.jpg',
-  'Відьма': 'art_3.jpg',
-  'Кривавий Звір': 'art_4.jpg',
-  'Некромант': 'art_5.jpg',
-  'Король Падіння': 'art_6.jpg'
+  'Лицар Світла':'card_01_knight.jpg',
+  'Тіньовий Мисливець':'card_02_hunter.jpg',
+  'Відьма з Боліт':'card_03_witch.jpg',
+  'Кривавий Звір':'card_04_beast.jpg',
+  'Некромант':'card_05_necromancer.jpg',
+  'Король Падіння':'card_06_fallen_king.jpg'
 };
 
 function cardHTML(c,clickable,playedClass=""){
-const icon=c.r==="melee"?"⚔️":c.r==="ranged"?"🏹":"✨";
-return '<div class="card '+playedClass+'" '+(clickable?'data-id="'+c.id+'"':'')+'><div class="power">'+c.p+'</div><div class="type">'+icon+'</div><div class="art">'+(ART[c.name]?'<img src="'+ART[c.name]+'" alt="">':c.i)+'</div><div class="name">'+c.name+'</div><div class="ability">'+c.a+'</div></div>';
+const src=ART[c.name];
+return '<div class="card '+playedClass+'" '+(clickable?'data-id="'+c.id+'"':'')+'><div class="art"><img src="'+src+'" alt="'+c.name+'"></div></div>';
 }
 function render(){
 $("hand").innerHTML=hand.map(c=>cardHTML(c,!busy&&!passed)).join("");$("hc").textContent=hand.length;
