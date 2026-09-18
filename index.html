@@ -6,53 +6,62 @@
 <title>Dark Kingdoms</title>
 <style>
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
-html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#090705;color:#f2e6cd;font-family:Georgia,serif}
+html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#080604;color:#f4e6ca;font-family:Georgia,serif}
+body{touch-action:manipulation}
 button{font:inherit}
-#app{width:100%;height:100%;min-height:100svh;display:flex;flex-direction:column;background:
-radial-gradient(ellipse at 50% 38%,#49351e 0,#21170e 38%,#090705 78%);position:relative}
-header{height:54px;flex:none;display:flex;align-items:center;justify-content:space-between;padding:0 12px;
-background:#090705ee;border-bottom:1px solid #8a6835;z-index:3}
-.logo{font-weight:900;letter-spacing:1.8px;color:#e1bb6b;font-size:18px;text-shadow:0 1px 8px #000}
-.round{font:12px Arial;color:#bcae95;text-align:center}.round strong{color:#e1bb6b}
-.score{font:bold 18px Arial;color:#e7d8bd}.score .you{color:#e1bb6b}
-#board{flex:1;min-height:0;display:flex;flex-direction:column;gap:6px;padding:7px;overflow:hidden}
-.side{flex:1;min-height:0;border:1px solid #71552f;border-radius:9px;background:#17110bd9;
-padding:5px 5px 5px 42px;position:relative;box-shadow:inset 0 0 35px #0006}
-.side:before{position:absolute;left:9px;top:50%;transform:translateY(-50%);writing-mode:vertical-rl;
-font:10px Arial;letter-spacing:2px;color:#a89472}.enemy:before{content:"ВОРОГ"}.player:before{content:"ТИ"}
-.lane{height:33.33%;min-height:0;border-bottom:1px solid #ffffff12;display:flex;align-items:center;gap:4px}
-.lane:last-child{border:0}.laneName{width:40px;flex:none;text-align:center;color:#a49479;font:9px Arial;line-height:11px}
-.cards{display:flex;gap:4px;overflow:hidden;align-items:center;min-width:0;min-height:0}
-.card{width:59px;height:77px;flex:0 0 59px;border:1px solid #9b743a;border-radius:6px;background:
-linear-gradient(145deg,#5b452a,#21170e);position:relative;padding:3px;box-shadow:0 3px 8px #0009;
-overflow:hidden}.card .power{font:bold 15px Arial;color:#fff}.card .art{height:34px;display:flex;align-items:center;justify-content:center;
-font-size:25px;filter:drop-shadow(0 2px 2px #000)}.card .name{font:bold 8px Arial;text-align:center;color:#f0dfbf;white-space:nowrap;overflow:hidden}
-.card .ability{font:7px Arial;color:#cdbb9c;text-align:center;line-height:8px;margin-top:2px}
-.card .type{position:absolute;right:3px;top:2px;font:8px Arial;color:#e1bb6b}
-.handbar{height:190px;flex:none;background:#090705f5;border-top:1px solid #8a6835;padding:6px 7px calc(7px + env(safe-area-inset-bottom));
-display:flex;flex-direction:column;z-index:3}.status{height:27px;display:flex;align-items:center;justify-content:space-between;
-font:11px Arial;color:#cfc0a5}.status b{color:#e1bb6b}.hand{flex:1;min-height:0;display:flex;gap:7px;overflow-x:auto;overflow-y:hidden;
-align-items:flex-start;padding:4px 2px 7px;scrollbar-width:none}.hand::-webkit-scrollbar{display:none}
-.hand .card{width:69px;height:99px;flex-basis:69px;cursor:pointer;border-width:2px}.hand .card .power{font-size:18px}.hand .card .art{height:43px;font-size:31px}
-.hand .card .name{font-size:9px}.hand .card .ability{font-size:8px;line-height:9px}.hand .card:active{transform:translateY(-4px);border-color:#f1cf78}
-.actions{height:35px;display:flex;gap:7px}.btn{flex:1;border:1px solid #9c753b;border-radius:6px;background:#3b2a19;color:#efd39a;
-font:bold 13px Arial}.btn:active{background:#5a4023}.btn:disabled{opacity:.45}
+#app{height:100%;min-height:100svh;display:flex;flex-direction:column;position:relative;overflow:hidden;
+background:radial-gradient(ellipse at 50% 42%,#604520 0,#2a1b10 34%,#0a0705 78%)}
+#particles{position:absolute;inset:0;pointer-events:none;overflow:hidden;z-index:1}
+.particle{position:absolute;width:4px;height:4px;border-radius:50%;background:#d6ad5f;opacity:0;animation:float 4s linear infinite}
+@keyframes float{0%{transform:translateY(20px) scale(.5);opacity:0}20%{opacity:.55}80%{opacity:.25}100%{transform:translateY(-110px) scale(1);opacity:0}}
+header{height:55px;flex:none;display:flex;align-items:center;justify-content:space-between;padding:0 11px;background:#090705ed;
+border-bottom:1px solid #92703a;z-index:5}.logo{font-weight:900;letter-spacing:1.8px;color:#e4bd6d;font-size:18px;text-shadow:0 0 12px #b8863b55}
+.round{font:11px Arial;color:#b8aa93;text-align:center}.round b{color:#e2ba68}.score{font:bold 18px Arial}.score .you{color:#e5bc69}
+#board{flex:1;min-height:0;display:flex;flex-direction:column;gap:6px;padding:7px;z-index:2}
+.side{flex:1;min-height:0;border:1px solid #76582f;border-radius:9px;background:#15100bdc;padding:5px 5px 5px 42px;
+position:relative;box-shadow:inset 0 0 40px #0008,0 0 20px #0005}.side:before{position:absolute;left:9px;top:50%;transform:translateY(-50%);
+writing-mode:vertical-rl;font:10px Arial;letter-spacing:2px;color:#a69577}.enemy:before{content:"ВОРОГ"}.player:before{content:"ТИ"}
+.lane{height:33.33%;min-height:0;border-bottom:1px solid #ffffff12;display:flex;align-items:center;gap:4px}.lane:last-child{border:0}
+.laneName{width:40px;flex:none;text-align:center;color:#a9997d;font:9px Arial;line-height:11px}.cards{display:flex;gap:4px;overflow:hidden;align-items:center;min-width:0}
+.card{width:59px;height:78px;flex:0 0 59px;border:1px solid #a37a3d;border-radius:7px;
+background:linear-gradient(145deg,#624a2c,#1e140c);padding:3px;position:relative;overflow:hidden;box-shadow:0 4px 9px #000b;
+transition:transform .16s,filter .16s,box-shadow .16s;border-top-color:#d3a956}
+.card:after{content:"";position:absolute;inset:0;background:linear-gradient(115deg,#fff3 0,transparent 22%,transparent 75%,#0004);pointer-events:none}
+.card .power{font:bold 15px Arial;color:#fff;text-shadow:0 1px 2px #000;position:relative;z-index:1}.card .art{height:35px;
+display:flex;align-items:center;justify-content:center;font-size:25px;filter:drop-shadow(0 3px 2px #000);position:relative;z-index:1}
+.card .name{font:bold 8px Arial;text-align:center;color:#f0dfbf;white-space:nowrap;overflow:hidden;position:relative;z-index:1}
+.card .ability{font:7px Arial;color:#d4c09d;text-align:center;line-height:8px;margin-top:2px;position:relative;z-index:1}
+.card .type{position:absolute;right:3px;top:2px;font:8px Arial;color:#e1bb6b;z-index:2}
+.playedIn{animation:land .35s ease-out}.enemyPlayedIn{animation:landEnemy .35s ease-out}
+@keyframes land{0%{transform:translateY(22px) scale(.72) rotate(-4deg);opacity:0}70%{transform:translateY(-3px) scale(1.03)}100%{transform:none;opacity:1}}
+@keyframes landEnemy{0%{transform:translateY(-22px) scale(.72) rotate(4deg);opacity:0}70%{transform:translateY(3px) scale(1.03)}100%{transform:none;opacity:1}}
+.handbar{height:196px;flex:none;background:#080604f7;border-top:1px solid #92703a;padding:6px 7px calc(7px + env(safe-area-inset-bottom));
+display:flex;flex-direction:column;z-index:5}.status{height:28px;display:flex;align-items:center;justify-content:space-between;font:11px Arial;color:#d1c0a1}
+.status b{color:#e1ba68}.hand{flex:1;min-height:0;display:flex;gap:7px;overflow-x:auto;align-items:flex-start;padding:4px 2px 7px;scrollbar-width:none}
+.hand::-webkit-scrollbar{display:none}.hand .card{width:70px;height:101px;flex-basis:70px;cursor:pointer;border-width:2px}
+.hand .card .power{font-size:18px}.hand .card .art{height:45px;font-size:32px}.hand .card .name{font-size:9px}.hand .card .ability{font-size:8px;line-height:9px}
+.hand .card:active{transform:translateY(-7px) scale(1.03);border-color:#f2ce76;box-shadow:0 7px 18px #000}
+.actions{height:35px;display:flex;gap:7px}.btn{flex:1;border:1px solid #a17a3f;border-radius:6px;background:#3b2a19;color:#efd39a;font:bold 13px Arial}
+.btn:active{background:#624525;transform:translateY(1px)}.btn:disabled{opacity:.42}
+#sound{position:absolute;right:8px;top:59px;z-index:8;border:1px solid #6f542e;border-radius:50%;background:#160f09cc;color:#dfba6d;width:31px;height:31px}
 .overlay{position:fixed;inset:0;background:#000d;display:none;align-items:center;justify-content:center;z-index:20;padding:20px}
-.modal{width:min(390px,94vw);background:linear-gradient(#2a1e12,#120d09);border:1px solid #a77d3d;border-radius:12px;
-padding:22px;text-align:center;box-shadow:0 18px 70px #000}.modal h1{margin:0 0 8px;color:#e3bc6d;font-size:28px}
-.modal p{font:13px Arial;color:#cfc0a5;line-height:1.5}.modal button{border:1px solid #a77d3d;background:#49341e;color:#efd39a;
-padding:12px 26px;border-radius:6px;font-weight:bold}
-#menu{position:fixed;inset:0;background:radial-gradient(circle at 50% 35%,#49351e,#0b0806 70%);z-index:30;
-display:flex;align-items:center;justify-content:center;padding:20px}.menuBox{text-align:center;width:min(430px,95vw)}
-.menuBox h1{font-size:42px;letter-spacing:3px;color:#e2bb6c;margin:0 0 4px}.menuBox .sub{font:12px Arial;color:#a99a80;letter-spacing:3px;margin-bottom:30px}
-.menuBtns{display:grid;gap:10px}.menuBtn{height:52px;border:1px solid #a67b3d;background:#332417;color:#efd39a;border-radius:7px;font-weight:bold}
+.modal{width:min(390px,94vw);background:linear-gradient(#2b1f12,#110c08);border:1px solid #aa7e3f;border-radius:12px;padding:23px;text-align:center;
+box-shadow:0 18px 70px #000}.modal h1{margin:0 0 8px;color:#e5bd6c;font-size:29px}.modal p{font:13px Arial;color:#d1c0a3;line-height:1.5}
+.modal button{border:1px solid #ad803e;background:#49341e;color:#efd39a;padding:12px 26px;border-radius:6px;font-weight:bold}
+#menu{position:fixed;inset:0;background:radial-gradient(circle at 50% 35%,#5a401f,#0b0806 70%);z-index:30;display:flex;align-items:center;justify-content:center;padding:20px}
+.menuBox{text-align:center;width:min(430px,95vw)}.menuBox h1{font-size:42px;letter-spacing:3px;color:#e2bb6c;margin:0 0 5px;text-shadow:0 0 22px #c18c3b66}
+.menuBox .sub{font:12px Arial;color:#a99a80;letter-spacing:3px;margin-bottom:30px}.menuBtns{display:grid;gap:10px}
+.menuBtn{height:52px;border:1px solid #a67b3d;background:#332417;color:#efd39a;border-radius:7px;font-weight:bold}
 .menuBtn.primary{background:#574021}.small{font:10px Arial;color:#756a59;margin-top:18px}
-@media(min-width:800px){#board{max-width:1050px;width:100%;margin:auto}.side{min-height:175px}.card{width:70px;height:91px;flex-basis:70px}.handbar{height:205px}.hand .card{width:78px;height:110px;flex-basis:78px}}
+.shake{animation:shake .22s ease-in-out 2}@keyframes shake{25%{transform:translateX(-5px)}75%{transform:translateX(5px)}}
+.flash{animation:flash .32s ease-out}@keyframes flash{0%{filter:brightness(2.5)}100%{filter:brightness(1)}}
+@media(min-width:800px){#board{max-width:1050px;width:100%;margin:auto}.side{min-height:175px}.card{width:70px;height:91px;flex-basis:70px}.handbar{height:210px}.hand .card{width:79px;height:111px;flex-basis:79px}}
 </style>
 </head>
 <body>
-<div id="app">
-<header><div class="logo">DARK KINGDOMS</div><div class="round" id="round">Раунд <strong>1</strong> / 3</div><div class="score">☠ <span id="es">0</span> : <span class="you" id="ps">0</span></div></header>
+<div id="app"><div id="particles"></div>
+<header><div class="logo">DARK KINGDOMS</div><div class="round" id="round">Раунд <b>1</b> / 3</div><div class="score">☠ <span id="es">0</span> : <span class="you" id="ps">0</span></div></header>
+<button id="sound" aria-label="Звук">🔊</button>
 <main id="board">
 <section class="side enemy"><div class="lane"><div class="laneName">✨<br>МАГІЯ</div><div class="cards" id="emagic"></div></div>
 <div class="lane"><div class="laneName">🏹<br>ДАЛЬНІ</div><div class="cards" id="eranged"></div></div>
@@ -61,86 +70,79 @@ display:flex;align-items:center;justify-content:center;padding:20px}.menuBox{tex
 <div class="lane"><div class="laneName">🏹<br>ДАЛЬНІ</div><div class="cards" id="pranged"></div></div>
 <div class="lane"><div class="laneName">✨<br>МАГІЯ</div><div class="cards" id="pmagic"></div></div></section>
 </main>
-<div class="handbar"><div class="status"><span id="msg">Твій хід</span><span>Карти: <b id="hc">10</b></span></div>
+<div class="handbar"><div class="status"><span id="msg">Твій хід — обери карту</span><span>Карти: <b id="hc">10</b></span></div>
 <div class="hand" id="hand"></div><div class="actions"><button class="btn" id="pass">ПАС</button><button class="btn" id="restart">НОВА ГРА</button></div></div>
 </div>
 
 <div class="overlay" id="resultBox"><div class="modal"><h1 id="result"></h1><p id="detail"></p><button id="again">ГРАТИ ЩЕ</button></div></div>
 <div id="menu"><div class="menuBox"><h1>DARK KINGDOMS</h1><div class="sub">КАРТОВА БИТВА</div>
-<div class="menuBtns"><button class="menuBtn primary" id="startBtn">ПОЧАТИ БИТВУ</button>
-<button class="menuBtn" id="quickBtn">ШВИДКИЙ БІЙ</button></div>
-<div class="small">Прототип HTML5 · 100% у браузері · без завантажень</div></div></div>
+<div class="menuBtns"><button class="menuBtn primary" id="startBtn">⚔ ПОЧАТИ БИТВУ</button><button class="menuBtn" id="quickBtn">⚡ ШВИДКИЙ БІЙ</button></div>
+<div class="small">HTML5 · мобільна версія · звук та анімації</div></div></div>
 
 <script>
 "use strict";
 const CARDS=[
-{name:"Вовк",p:4,r:"melee",i:"🐺",a:""}, {name:"Вартовий",p:5,r:"melee",i:"🛡️",a:""},
-{name:"Берсерк",p:7,r:"melee",i:"🪓",a:""}, {name:"Лицар",p:6,r:"melee",i:"⚔️",a:""},
-{name:"Мисливець",p:4,r:"ranged",i:"🏹",a:""}, {name:"Арбалетник",p:6,r:"ranged",i:"🎯",a:""},
-{name:"Слідопит",p:5,r:"ranged",i:"🦅",a:""}, {name:"Тінь",p:5,r:"ranged",i:"🥷",a:""},
-{name:"Відьма",p:5,r:"magic",i:"🧙",a:""}, {name:"Некромант",p:6,r:"magic",i:"💀",a:""},
-{name:"Вогнемант",p:7,r:"magic",i:"🔥",a:""}, {name:"Друїд",p:4,r:"magic",i:"🌿",a:""}
-];
-let hand=[],enemyHand=[],played=[],enemyPlayed=[],round=1,youRounds=0,enemyRounds=0,passed=false,enemyPassed=false,busy=false;
+["Вовк",4,"melee","🐺",""],["Вартовий",5,"melee","🛡️",""],["Берсерк",7,"melee","🪓",""],
+["Лицар",6,"melee","⚔️",""],["Мисливець",4,"ranged","🏹",""],["Арбалетник",6,"ranged","🎯",""],
+["Слідопит",5,"ranged","🦅",""],["Тінь",5,"ranged","🥷",""],["Відьма",5,"magic","🧙",""],
+["Некромант",6,"magic","💀",""],["Вогнемант",7,"magic","🔥",""],["Друїд",4,"magic","🌿",""]
+].map(x=>({name:x[0],p:x[1],r:x[2],i:x[3],a:x[4]}));
+let hand=[],enemyHand=[],played=[],enemyPlayed=[],round=1,youRounds=0,enemyRounds=0,passed=false,enemyPassed=false,busy=false,soundOn=true,audio=null;
 
 const $=id=>document.getElementById(id);
 function clone(c){return {...c,id:Math.random().toString(36).slice(2)}}
 function deck(){let d=[];for(let k=0;k<2;k++)CARDS.forEach(c=>d.push(clone(c)));return d.sort(()=>Math.random()-.5)}
 function total(a){return a.reduce((s,c)=>s+c.p,0)}
-function cardHTML(c,clickable){
+function cardHTML(c,clickable,playedClass=""){
 const icon=c.r==="melee"?"⚔️":c.r==="ranged"?"🏹":"✨";
-return '<div class="card" '+(clickable?'data-id="'+c.id+'"':'')+'><div class="power">'+c.p+'</div><div class="type">'+icon+'</div><div class="art">'+c.i+'</div><div class="name">'+c.name+'</div><div class="ability">'+c.a+'</div></div>';
+return '<div class="card '+playedClass+'" '+(clickable?'data-id="'+c.id+'"':'')+'><div class="power">'+c.p+'</div><div class="type">'+icon+'</div><div class="art">'+c.i+'</div><div class="name">'+c.name+'</div><div class="ability">'+c.a+'</div></div>';
 }
 function render(){
-$("hand").innerHTML=hand.map(c=>cardHTML(c,!busy&&!passed)).join("");
-$("hc").textContent=hand.length;
+$("hand").innerHTML=hand.map(c=>cardHTML(c,!busy&&!passed)).join("");$("hc").textContent=hand.length;
 ["melee","ranged","magic"].forEach(r=>{
-$("p"+r).innerHTML=played.filter(c=>c.r===r).map(c=>cardHTML(c,false)).join("");
-$("e"+r).innerHTML=enemyPlayed.filter(c=>c.r===r).map(c=>cardHTML(c,false)).join("");
+$("p"+r).innerHTML=played.filter(x=>x.r===r).map(x=>cardHTML(x,false,"playedIn")).join("");
+$("e"+r).innerHTML=enemyPlayed.filter(x=>x.r===r).map(x=>cardHTML(x,false,"enemyPlayedIn")).join("");
 });
-$("ps").textContent=total(played);$("es").textContent=total(enemyPlayed);
-$("round").innerHTML="Раунд <strong>"+round+"</strong> / 3";
+$("ps").textContent=total(played);$("es").textContent=total(enemyPlayed);$("round").innerHTML="Раунд <b>"+round+"</b> / 3";
 $("pass").disabled=busy||passed;
 }
+function tone(freq,dur,type="sine",gain=.045){
+if(!soundOn)return;if(!audio)audio=new (window.AudioContext||window.webkitAudioContext)();
+if(audio.state==="suspended")audio.resume();let o=audio.createOscillator(),g=audio.createGain();o.type=type;o.frequency.value=freq;
+g.gain.setValueAtTime(gain,audio.currentTime);g.gain.exponentialRampToValueAtTime(.001,audio.currentTime+dur);o.connect(g);g.connect(audio.destination);o.start();o.stop(audio.currentTime+dur);
+}
+function playCardSound(){tone(240,.09,"triangle",.06);setTimeout(()=>tone(420,.12,"triangle",.045),45)}
+function passSound(){tone(160,.18,"sine",.04)}
+function winSound(){tone(440,.12,"triangle",.06);setTimeout(()=>tone(660,.18,"triangle",.06),120);setTimeout(()=>tone(880,.3,"triangle",.06),250)}
+function loseSound(){tone(180,.2,"sawtooth",.025);setTimeout(()=>tone(120,.35,"sawtooth",.02),180)}
+$("sound").onclick=()=>{soundOn=!soundOn;$("sound").textContent=soundOn?"🔊":"🔇";if(soundOn)tone(520,.08)};
 $("hand").addEventListener("click",e=>{
-const el=e.target.closest(".card");if(!el||busy||passed)return;
-const id=el.dataset.id,i=hand.findIndex(c=>c.id===id);if(i<0)return;
-played.push(hand.splice(i,1)[0]);busy=true;$("msg").textContent="Ворог думає…";render();setTimeout(enemyTurn,500);
+const el=e.target.closest(".card");if(!el||busy||passed)return;const i=hand.findIndex(c=>c.id===el.dataset.id);if(i<0)return;
+played.push(hand.splice(i,1)[0]);busy=true;playCardSound();$("msg").textContent="Ворог думає…";render();setTimeout(enemyTurn,500);
 });
 function enemyTurn(){
 if(enemyPassed||enemyHand.length===0){enemyPassed=true;busy=false;render();checkEnd();return}
 const ps=total(played),es=total(enemyPlayed);
-let shouldPass=(enemyPlayed.length>=5&&es>=ps+5)||(passed&&es>=ps);
-if(shouldPass){enemyPassed=true;busy=false;$("msg").textContent="Ворог пасує.";render();checkEnd();return}
-let target;
-if(ps>es+4) target=enemyHand.slice().sort((a,b)=>b.p-a.p)[0];
-else target=enemyHand[Math.floor(Math.random()*enemyHand.length)];
-enemyHand.splice(enemyHand.indexOf(target),1);enemyPlayed.push(target);
+if((enemyPlayed.length>=5&&es>=ps+5)||(passed&&es>=ps)){enemyPassed=true;busy=false;$("msg").textContent="Ворог пасує.";passSound();render();checkEnd();return}
+let target=ps>es+4?enemyHand.slice().sort((a,b)=>b.p-a.p)[0]:enemyHand[Math.floor(Math.random()*enemyHand.length)];
+enemyHand.splice(enemyHand.indexOf(target),1);enemyPlayed.push(target);tone(210,.08,"triangle",.035);
 busy=false;$("msg").textContent=passed?"Ворог продовжує…":"Твій хід";render();checkEnd();
 }
-function pass(){
-if(busy||passed)return;passed=true;$("msg").textContent="Ти пасуєш.";render();
-if(enemyPassed)checkEnd();else setTimeout(enemyTurn,400);
-}
-function checkEnd(){if((passed&&enemyPassed)||(hand.length===0&&enemyHand.length===0))setTimeout(endRound,450)}
+function pass(){if(busy||passed)return;passed=true;$("msg").textContent="Ти пасуєш.";passSound();render();setTimeout(enemyTurn,400)}
+function checkEnd(){if((passed&&enemyPassed)||(hand.length===0&&enemyHand.length===0))setTimeout(endRound,500)}
 function endRound(){
-const a=total(played),b=total(enemyPlayed);
-if(a>b)youRounds++;else if(b>a)enemyRounds++;
-render();
+const a=total(played),b=total(enemyPlayed);if(a>b)youRounds++;else if(b>a)enemyRounds++;render();
 if(youRounds>=2||enemyRounds>=2||round>=3){
 $("result").textContent=youRounds>enemyRounds?"🏆 ПЕРЕМОГА":"☠ ПОРАЗКА";
 $("detail").textContent="Раунди: "+youRounds+" : "+enemyRounds+" · Сила останнього раунду: "+a+" : "+b;
-$("resultBox").style.display="flex";return;
+$("resultBox").style.display="flex";youRounds>enemyRounds?winSound():loseSound();return}
+round++;played=[];enemyPlayed=[];passed=false;enemyPassed=false;busy=false;hand=deck().slice(0,10);enemyHand=deck().slice(0,10);
+$("msg").textContent="Новий раунд — твій хід";render();tone(330,.15,"triangle",.04);
 }
-round++;played=[];enemyPlayed=[];passed=false;enemyPassed=false;busy=false;
-hand=deck().slice(0,10);enemyHand=deck().slice(0,10);$("msg").textContent="Новий раунд — твій хід";render();
-}
-function startGame(){
-$("menu").style.display="none";$("resultBox").style.display="none";round=1;youRounds=0;enemyRounds=0;played=[];enemyPlayed=[];
-passed=false;enemyPassed=false;busy=false;hand=deck().slice(0,10);enemyHand=deck().slice(0,10);
-$("msg").textContent="Твій хід — обери карту";render();
-}
+function startGame(){if(!audio){try{audio=new (window.AudioContext||window.webkitAudioContext)()}catch(e){}}
+$("menu").style.display="none";$("resultBox").style.display="none";round=1;youRounds=0;enemyRounds=0;played=[];enemyPlayed=[];passed=false;enemyPassed=false;busy=false;
+hand=deck().slice(0,10);enemyHand=deck().slice(0,10);$("msg").textContent="Твій хід — обери карту";render();tone(520,.1,"triangle",.045)}
 $("pass").onclick=pass;$("restart").onclick=startGame;$("again").onclick=startGame;$("startBtn").onclick=startGame;$("quickBtn").onclick=startGame;
+for(let i=0;i<24;i++){let p=document.createElement("i");p.className="particle";p.style.left=(Math.random()*100)+"%";p.style.top=(45+Math.random()*55)+"%";p.style.animationDelay=(Math.random()*4)+"s";p.style.animationDuration=(3+Math.random()*3)+"s";$("particles").appendChild(p)}
 </script>
-</body>
-</html>
+</body></html>
