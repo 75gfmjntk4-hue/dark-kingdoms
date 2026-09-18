@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="uk"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Dark Kingdoms</title>
+<style>
+:root{--gold:#d7b36a;--panel:#19140f;--line:#70552f}
+*{box-sizing:border-box}body{margin:0;background:#090806;color:#eee;font-family:Georgia,serif;touch-action:manipulation}
+#app{min-height:100vh;min-height:100svh;background:radial-gradient(circle at 50% 35%,#3d2d1b,#110d09 70%);display:flex;flex-direction:column}
+header{height:52px;display:flex;align-items:center;justify-content:space-between;padding:0 12px;background:#090807e8;border-bottom:1px solid var(--line);position:relative;z-index:2}
+.logo{font-weight:bold;letter-spacing:1.5px;color:var(--gold);font-size:18px}.round{font:12px Arial;color:#b9aa91}.score{font:bold 19px Arial}.score b{color:var(--gold)}
+#board{flex:1;padding:7px;display:flex;flex-direction:column;gap:6px;overflow:hidden}
+.faction{position:relative;border:1px solid #59442a;border-radius:7px;background:#1b150fbb;padding:5px 5px 5px 42px;min-height:130px;flex:1}
+.faction .tag{position:absolute;left:8px;top:50%;transform:translateY(-50%);writing-mode:vertical-rl;color:#9e8b6d;font:10px Arial;letter-spacing:2px}
+.lane{height:33.33%;min-height:38px;border-bottom:1px solid #ffffff12;display:flex;align-items:center;gap:4px}.lane:last-child{border:0}
+.laneName{width:43px;color:#998a73;font:9px Arial;text-align:center}.cards{display:flex;gap:4px;overflow:hidden}
+.card{width:58px;height:75px;flex:0 0 58px;border:1px solid #8e6d38;border-radius:6px;background:linear-gradient(145deg,#554127,#211810);padding:3px;position:relative;box-shadow:0 3px 7px #0008}
+.card .p{font:bold 16px Arial}.card .i{text-align:center;font-size:22px;line-height:24px}.card .n{text-align:center;font:bold 8px Arial}.card .a{text-align:center;color:#cbbb9f;font:7px Arial;line-height:8px}
+.handbar{height:168px;background:#0b0907f2;border-top:1px solid var(--line);padding:6px 7px calc(6px + env(safe-area-inset-bottom));display:flex;flex-direction:column}
+.status{height:29px;display:flex;justify-content:space-between;align-items:center;font:11px Arial;color:#c7b99f}.status button{background:#362819;color:#e8cb8c;border:1px solid #8c6a38;border-radius:5px;padding:5px 10px}
+.hand{display:flex;gap:6px;overflow-x:auto;align-items:flex-start;padding:3px 2px 7px;flex:1}
+.hand .card{width:66px;height:93px;flex-basis:66px;cursor:pointer}.hand .card .p{font-size:18px}.hand .card .i{font-size:28px;line-height:31px}.hand .card .n{font-size:9px}.hand .card .a{font-size:8px;line-height:9px}
+.hand .card:active{transform:translateY(-4px);border-color:#f0cc79}
+.actions{display:flex;gap:7px}.btn{flex:1;height:34px;background:#3a2a19;border:1px solid #98733d;border-radius:5px;color:#ead095;font-weight:bold}.btn:disabled{opacity:.45}
+.overlay{position:fixed;inset:0;background:#000b;display:none;align-items:center;justify-content:center;z-index:10;padding:20px}.modal{width:min(390px,94vw);background:#21180f;border:1px solid #9b753d;border-radius:10px;padding:22px;text-align:center;box-shadow:0 15px 50px #000}.modal h1{color:var(--gold);margin:0 0 10px}.modal p{font:13px Arial;color:#c8b89d;line-height:1.5}.modal button{padding:12px 25px;background:#4a351e;border:1px solid #b68a48;color:#f1d79a;border-radius:6px;font-weight:bold}
+@media(min-width:800px){#board{max-width:1000px;width:100%;margin:auto}.faction{min-height:170px}.card{width:68px;height:88px;flex-basis:68px}.hand .card{width:75px;height:105px;flex-basis:75px}.handbar{height:190px}}
+</style></head>
+<body><div id="app">
+<header><div class="logo">DARK KINGDOMS</div><div class="round" id="round">Раунд 1</div><div class="score">☠ <span id="es">0</span> : <b><span id="ps">0</span></b></div></header>
+<main id="board">
+<section class="faction"><span class="tag">ВОРОГ</span><div class="lane"><div class="laneName">✨<br>МАГІЯ</div><div class="cards" id="emagic"></div></div><div class="lane"><div class="laneName">🏹<br>ДАЛЬНІ</div><div class="cards" id="eranged"></div></div><div class="lane"><div class="laneName">⚔<br>БЛИЖНІ</div><div class="cards" id="emelee"></div></div></section>
+<section class="faction"><span class="tag">ТИ</span><div class="lane"><div class="laneName">⚔<br>БЛИЖНІ</div><div class="cards" id="pmelee"></div></div><div class="lane"><div class="laneName">🏹<br>ДАЛЬНІ</div><div class="cards" id="pranged"></div></div><div class="lane"><div class="laneName">✨<br>МАГІЯ</div><div class="cards" id="pmagic"></div></div></section>
+</main>
+<div class="handbar"><div class="status"><span id="msg">Твій хід — обери карту</span><span>Карт: <b id="hc">10</b></span></div><div class="hand" id="hand"></div><div class="actions"><button class="btn" id="pass">ПАС</button><button class="btn" id="restart">НОВА ГРА</button></div></div>
+</div><div class="overlay" id="overlay"><div class="modal"><h1 id="result"></h1><p id="detail"></p><button id="again">ГРАТИ ЩЕ</button></div></div>
+<script src="game.js"></script></body></html>
