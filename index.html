@@ -19,35 +19,33 @@ background:radial-gradient(ellipse at 50% 42%,#604520 0,#2a1b10 34%,#0a0705 78%)
 header{height:55px;flex:none;display:flex;align-items:center;justify-content:space-between;padding:0 11px;background:#090705ed;
 border-bottom:1px solid #92703a;z-index:5}.logo{font-weight:900;letter-spacing:1.8px;color:#e4bd6d;font-size:18px;text-shadow:0 0 12px #b8863b55}
 .round{font:11px Arial;color:#b8aa93;text-align:center}.round b{color:#e2ba68}.score{font:bold 18px Arial}.score .you{color:#e5bc69}
-#board{flex:1;min-height:0;display:flex;flex-direction:column;gap:8px;padding:8px 8px 6px;z-index:2;overflow:hidden;background:url('board_texture.jpg') center/100% 100% no-repeat;position:relative}
-.side{flex:1;min-height:0;border:1px solid #8a683488;border-radius:11px;background:linear-gradient(180deg,#08060455,#08060466);padding:5px 7px 5px 58px;position:relative;box-shadow:inset 0 0 45px #0009,0 0 18px #0006;overflow:hidden}
-.side:before{position:absolute;left:10px;top:50%;transform:translateY(-50%);writing-mode:vertical-rl;font:11px Arial;letter-spacing:3px;color:#e0c78f;text-shadow:0 2px 5px #000}.enemy:before{content:"ВОРОГ"}.player:before{content:"ТИ"}
-.lane{height:33.33%;min-height:0;border-bottom:1px solid #d6b77c22;display:flex;align-items:center;gap:7px;overflow:hidden}.lane:last-child{border:0}
-.laneName{width:46px;flex:none;text-align:center;color:#b5a382;font:10px Arial;line-height:13px;text-shadow:0 1px 4px #000}
-.cards{flex:1;min-width:0;height:100%;display:flex;flex-wrap:wrap;gap:5px;align-content:center;align-items:center;overflow:hidden}
-.card{width:82px;height:98px;aspect-ratio:416/496;flex:0 0 82px;border:1px solid #9a7540;border-radius:7px;background:#080604;position:relative;overflow:hidden;box-shadow:0 5px 14px #000d;transition:transform .16s,filter .16s,box-shadow .16s}
-.card:before{content:"";position:absolute;inset:0;border:1px solid #d6b77c88;border-radius:7px;z-index:5;pointer-events:none;box-shadow:inset 0 0 10px #0008}.card:after{content:"";position:absolute;inset:0;background:linear-gradient(120deg,#fff2 0,transparent 15%,transparent 70%,#0004 100%);pointer-events:none;z-index:4}
-.card .art{position:absolute;inset:0;z-index:1;overflow:hidden;border-radius:6px;background:#080604}.card .art img{position:absolute!important;inset:0!important;display:block!important;width:100%!important;height:100%!important;max-width:none!important;max-height:none!important;object-fit:fill!important;object-position:center!important;border-radius:6px!important;margin:0!important;padding:0!important}
-.card .power,.card .type,.card .name,.card .class,.card .ability,.card .stats{display:none}.playedIn{animation:land .35s ease-out}.enemyPlayedIn{animation:landEnemy .35s ease-out}
-@keyframes land{0%{transform:translateY(22px) scale(.72) rotate(-4deg);opacity:0}70%{transform:translateY(-3px) scale(1.03)}100%{transform:none;opacity:1}}@keyframes landEnemy{0%{transform:translateY(-22px) scale(.72) rotate(4deg);opacity:0}70%{transform:translateY(3px) scale(1.03)}100%{transform:none;opacity:1}}
-.handbar{height:212px;flex:none;background:#080604f7;border-top:1px solid #92703a;padding:6px 7px calc(7px + env(safe-area-inset-bottom));display:flex;flex-direction:column;z-index:5}.status{height:28px;display:flex;align-items:center;justify-content:space-between;font:11px Arial;color:#d1c0a1}.status b{color:#e1ba68}.hand{flex:1;min-height:0;display:flex;gap:7px;overflow-x:auto;align-items:center;padding:4px 2px 7px;scrollbar-width:none}.hand::-webkit-scrollbar{display:none}
-.hand .card{width:104px;height:124px;aspect-ratio:416/496;flex:0 0 104px;cursor:pointer}.hand .card:active{transform:translateY(-8px) scale(1.03);border-color:#f2ce76;box-shadow:0 10px 22px #000}
+#board{flex:1;min-height:0;position:relative;overflow:hidden;z-index:2;background:url('./board_texture.jpg?v=14') center/100% 100% no-repeat;display:grid;grid-template-rows:repeat(6,1fr);padding:0}
+#board:after{content:'';position:absolute;inset:0;pointer-events:none;background:linear-gradient(90deg,#0008 0,#0000 14%,#0000 86%,#0008 100%),radial-gradient(ellipse at center,transparent 35%,#0005 100%);z-index:10}
+#board:before{content:'';position:absolute;inset:0;box-shadow:inset 0 0 28px #000b;pointer-events:none;z-index:11}
+.side{display:contents}
+.side:before{display:none}
+.lane{position:relative;min-width:0;min-height:0;display:flex;align-items:center;overflow:hidden;padding-left:56px;padding-right:12px;border:0;background:transparent;z-index:2}
+.laneName{position:absolute;left:7px;top:50%;transform:translateY(-50%);width:42px;text-align:center;color:#d8c49b;font:10px Arial;line-height:13px;text-shadow:0 2px 5px #000;z-index:4}
+.cards{height:100%;min-width:0;flex:1;display:flex;align-items:center;justify-content:flex-start;overflow:visible;padding-left:2px}
+.card{width:82px;height:98px;flex:0 0 82px;aspect-ratio:416/496;border:0;border-radius:7px;background:#080604;position:relative;overflow:hidden;box-shadow:0 5px 14px #000e;transition:transform .16s,filter .16s,box-shadow .16s;margin-right:-18px}
+.card:before{content:"";position:absolute;inset:0;border:1px solid #d6b77c88;border-radius:7px;z-index:5;pointer-events:none;box-shadow:inset 0 0 10px #0008}
+.card:after{content:"";position:absolute;inset:0;background:linear-gradient(120deg,#fff2 0,transparent 15%,transparent 70%,#0004 100%);pointer-events:none;z-index:4}
+.card .art{position:absolute;inset:0;z-index:1;overflow:hidden;border-radius:6px;background:#080604}
+.card .art img{position:absolute!important;inset:0!important;display:block!important;width:100%!important;height:100%!important;max-width:none!important;max-height:none!important;object-fit:fill!important;object-position:center!important;border-radius:6px!important;margin:0!important;padding:0!important}
+.card .power,.card .type,.card .name,.card .class,.card .ability,.card .stats{display:none}
+.playedIn{animation:land .35s ease-out}.enemyPlayedIn{animation:landEnemy .35s ease-out}
+@keyframes land{0%{transform:translateY(22px) scale(.72) rotate(-4deg);opacity:0}70%{transform:translateY(-3px) scale(1.03)}100%{transform:none;opacity:1}}
+@keyframes landEnemy{0%{transform:translateY(-22px) scale(.72) rotate(4deg);opacity:0}70%{transform:translateY(3px) scale(1.03)}100%{transform:none;opacity:1}}
+.handbar{height:205px;flex:none;background:#080604f7;border-top:1px solid #92703a;padding:6px 7px calc(7px + env(safe-area-inset-bottom));display:flex;flex-direction:column;z-index:5}
+.status{height:28px;display:flex;align-items:center;justify-content:space-between;font:11px Arial;color:#d1c0a1}.status b{color:#e1ba68}
+.hand{flex:1;min-height:0;display:flex;gap:7px;overflow-x:auto;align-items:center;padding:4px 2px 7px;scrollbar-width:none}.hand::-webkit-scrollbar{display:none}
+.hand .card{width:101px;height:121px;flex:0 0 101px;margin-right:0;cursor:pointer}.hand .card:active{transform:translateY(-8px) scale(1.03);border-color:#f2ce76;box-shadow:0 10px 22px #000}
 .actions{height:35px;display:flex;gap:7px}.btn{flex:1;border:1px solid #a17a3f;border-radius:6px;background:#3b2a19;color:#efd39a;font:bold 13px Arial}.btn:active{background:#624525;transform:translateY(1px)}.btn:disabled{opacity:.42}
-#board:before{content:'';position:absolute;inset:2px;border:1px solid #c19a55aa;box-shadow:inset 0 0 30px #000b;pointer-events:none;z-index:0;border-radius:10px}
-#sound{position:absolute;right:8px;top:59px;z-index:8;border:1px solid #6f542e;border-radius:50%;background:#160f09cc;color:#dfba6d;width:31px;height:31px}
-.overlay{position:fixed;inset:0;background:#000d;display:none;align-items:center;justify-content:center;z-index:20;padding:20px}
-.modal{width:min(390px,94vw);background:linear-gradient(#2b1f12,#110c08);border:1px solid #aa7e3f;border-radius:12px;padding:23px;text-align:center;
-box-shadow:0 18px 70px #000}.modal h1{margin:0 0 8px;color:#e5bd6c;font-size:29px}.modal p{font:13px Arial;color:#d1c0a3;line-height:1.5}
-.modal button{border:1px solid #ad803e;background:#49341e;color:#efd39a;padding:12px 26px;border-radius:6px;font-weight:bold}
-#menu{position:fixed;inset:0;background:radial-gradient(circle at 50% 35%,#5a401f,#0b0806 70%);z-index:30;display:flex;align-items:center;justify-content:center;padding:20px}
-.menuBox{text-align:center;width:min(430px,95vw)}.menuBox h1{font-size:42px;letter-spacing:3px;color:#e2bb6c;margin:0 0 5px;text-shadow:0 0 22px #c18c3b66}
-.menuBox .sub{font:12px Arial;color:#a99a80;letter-spacing:3px;margin-bottom:30px}.menuBtns{display:grid;gap:10px}
-.menuBtn{height:52px;border:1px solid #a67b3d;background:#332417;color:#efd39a;border-radius:7px;font-weight:bold}
-.menuBtn.primary{background:#574021}.small{font:10px Arial;color:#756a59;margin-top:18px}
-.shake{animation:shake .22s ease-in-out 2}@keyframes shake{25%{transform:translateX(-5px)}75%{transform:translateX(5px)}}
-.flash{animation:flash .32s ease-out}@keyframes flash{0%{filter:brightness(2.5)}100%{filter:brightness(1)}}
-@media(min-width:800px){#board{max-width:1050px;width:100%;margin:auto}.side{min-height:175px}.card{width:88px;height:105px;flex-basis:88px}.handbar{height:220px}.hand .card{width:108px;height:129px;flex-basis:108px}}
-@media(max-width:430px){.side{padding-left:54px}.laneName{width:42px;font-size:9px}.cards{gap:4px}.card{width:76px;height:91px;flex-basis:76px}.hand .card{width:101px;height:121px;flex-basis:101px}}
+#sound{position:absolute;right:8px;top:59px;z-index:15;border:1px solid #6f542e;border-radius:50%;background:#160f09cc;color:#dfba6d;width:31px;height:31px}
+.overlay{position:fixed;inset:0;background:#000d;display:none;align-items:center;justify-content:center;z-index:20;padding:20px}.modal{width:min(390px,94vw);background:linear-gradient(#2b1f12,#110c08);border:1px solid #aa7e3f;border-radius:12px;padding:23px;text-align:center;box-shadow:0 18px 70px #000}.modal h1{margin:0 0 8px;color:#e5bd6c;font-size:29px}.modal p{font:13px Arial;color:#d1c0a3;line-height:1.5}.modal button{border:1px solid #ad803e;background:#49341e;color:#efd39a;padding:12px 26px;border-radius:6px;font-weight:bold}
+#menu{position:fixed;inset:0;background:radial-gradient(circle at 50% 35%,#5a401f,#0b0806 70%);z-index:30;display:flex;align-items:center;justify-content:center;padding:20px}.menuBox{text-align:center;width:min(430px,95vw)}.menuBox h1{font-size:42px;letter-spacing:3px;color:#e2bb6c;margin:0 0 5px;text-shadow:0 0 22px #c18c3b66}.menuBox .sub{font:12px Arial;color:#a99a80;letter-spacing:3px;margin-bottom:30px}.menuBtns{display:grid;gap:10px}.menuBtn{height:52px;border:1px solid #a67b3d;background:#332417;color:#efd39a;border-radius:7px;font-weight:bold}.menuBtn.primary{background:#574021}.small{font:10px Arial;color:#756a59;margin-top:18px}.shake{animation:shake .22s ease-in-out 2}@keyframes shake{25%{transform:translateX(-5px)}75%{transform:translateX(5px)}}.flash{animation:flash .32s ease-out}@keyframes flash{0%{filter:brightness(2.5)}100%{filter:brightness(1)}}
+@media(min-width:800px){#board{max-width:1100px;width:100%;margin:auto}.card{width:88px;height:105px;flex-basis:88px}.handbar{height:220px}.hand .card{width:108px;height:129px;flex-basis:108px}}
+@media(max-width:430px){.lane{padding-left:54px;padding-right:8px}.laneName{left:5px;width:42px;font-size:9px}.card{width:82px;height:98px;flex-basis:82px;margin-right:-18px}.hand .card{width:101px;height:121px;flex-basis:101px;margin-right:0}}
 </style>
 </head>
 <body>
@@ -88,12 +86,12 @@ function clone(c){return {...c,id:Math.random().toString(36).slice(2)}}
 function deck(){let d=[];for(let k=0;k<2;k++)CARDS.forEach(c=>d.push(clone(c)));return d.sort(()=>Math.random()-.5)}
 function total(a){return a.reduce((s,c)=>s+c.p,0)}
 const ART={
-  'Лицар Світла':'card_01_knight.jpg',
-  'Тіньовий Мисливець':'card_02_hunter.jpg',
-  'Відьма з Боліт':'card_03_witch.jpg',
-  'Кривавий Звір':'card_04_beast.jpg',
-  'Некромант':'card_05_necromancer.jpg',
-  'Король Падіння':'card_06_fallen_king.jpg'
+  'Лицар Світла':'./card_01_knight.jpg?v=14',
+  'Тіньовий Мисливець':'./card_02_hunter.jpg?v=14',
+  'Відьма з Боліт':'./card_03_witch.jpg?v=14',
+  'Кривавий Звір':'./card_04_beast.jpg?v=14',
+  'Некромант':'./card_05_necromancer.jpg?v=14',
+  'Король Падіння':'./card_06_fallen_king.jpg?v=14'
 };
 
 function cardHTML(c,clickable,playedClass=""){
